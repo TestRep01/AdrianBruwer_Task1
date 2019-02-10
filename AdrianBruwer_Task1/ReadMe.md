@@ -2,7 +2,7 @@
 <ul>
 <li>A windows node - (Windows work station or Server)</li>
 <li>Visual studio</li>
-<li>[https://visualstudio.github.com/] : GitHub extension for visual studio</li>
+<li>[GitHub extension for visual studio](https://visualstudio.github.com/)</li>
 
 <li>Jenkins (if a CI is required)</li>
 <ul>
@@ -12,7 +12,22 @@
 </li>
 </ul> 
 
+## Disclaimer
+For the perpose of this prodject permission has been granted to use the site bujinkan-ct.co.za.
+
+A gmail and github account have been setup for a easy deploy.
+<ul>
+<li>Gmail testtasksel@gmail.com, password P@$$W0rd</li>
+<li>Github users testtasksel@gmail.com, password TestTask1Sel</li>
+</ul> 
+
+It has not been done for this prodject, but in a real wold deployment a website would be setup to
+display and record the results gennerated for the TRX files.
+
 ## Installing
+Please install the Github visual studio extension.
+In Visual studio go to Team explore and select Managed Connections Github.
+Enter provided Credintials.(testtasksel@gmail.com, password P@$$W0rd)
 
 ## Running the tests
 

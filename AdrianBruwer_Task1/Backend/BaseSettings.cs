@@ -1,7 +1,6 @@
 ﻿namespace AdrianBruwer_Task1.Backend
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System;
 
     public class BaseSettings
     {
@@ -14,6 +13,8 @@
             {
                 Assert.Fail("The url can not be null", nameof(url));
             }
+
+            Browser.Goto(url);
         }
     }
 }

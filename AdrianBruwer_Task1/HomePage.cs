@@ -8,6 +8,9 @@
 
     public class HomePage
     {
+        // Properties
+        private static int threeSec = Convert.ToInt16(System.Configuration.ConfigurationManager.AppSettings["ThreeSec"]);
+
         // WebElements on home page
 
         // Finds the text link for the schools link on the home page
@@ -42,7 +45,7 @@
         public void SelectedSchool()
         {
             this.schoolLink.Click();
-            Browser.ToSleep(3000);
+            Browser.ToSleep(threeSec);
             this.schoolSelected.Click();
         }
     }

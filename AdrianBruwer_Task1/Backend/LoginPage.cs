@@ -1,8 +1,8 @@
 ﻿namespace AdrianBruwer_Task1.Backend
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Support.PageObjects;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     public class LoginPage
     {
@@ -21,17 +21,7 @@
 
         [FindsBy(How = How.ClassName, Using = "wp-heading-inline")]
         private readonly IWebElement confirmUserLoggedIn;
-
-        // Selectors for IE
-        [FindsBy(How = How.CssSelector, Using = "#wp-submit")]
-        private readonly IWebElement IEsubmitButton;
-
-        [FindsBy(How = How.ClassName, Using = "user_pass")]
-        private readonly IWebElement IEpassword;
-
-        [FindsBy(How = How.Id, Using = "user_login")]
-        private readonly IWebElement IEusername;
-
+ 
         /// <summary>
         /// Returns true if you on the logon page
         /// </summary>

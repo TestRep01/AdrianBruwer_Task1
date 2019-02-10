@@ -1,5 +1,6 @@
 ﻿namespace AdrianBruwer_Task1
 {
+    using System;
     using AdrianBruwer_Task1.Backend;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -13,6 +14,9 @@
         private static string logonPage = System.Configuration.ConfigurationManager.AppSettings["LogonPage"];
         private static string backLinkText = System.Configuration.ConfigurationManager.AppSettings["backLinkText"];
         private static string profilePageText = System.Configuration.ConfigurationManager.AppSettings["ProfilePageText"];
+        private static int oneSec = Convert.ToInt16(System.Configuration.ConfigurationManager.AppSettings["OneSec"]);
+        private static int twoSec = Convert.ToInt16(System.Configuration.ConfigurationManager.AppSettings["TwoSec"]);
+        private static int threeSec = Convert.ToInt16(System.Configuration.ConfigurationManager.AppSettings["ThreeSec"]);
 
         // Test Managment
 
@@ -32,6 +36,7 @@
         [TestCleanup]
         public void TearDown()
         {
+            Browser.ToSleep(twoSec);
             Browser.Close();
         }
 
@@ -46,6 +51,7 @@
         {
             // Navigate to the home page
             Goto(startUrl);
+            Browser.ToSleep(twoSec);
 
             // Assert you on the home page
             Assert.IsTrue(Pages.HomePage.IsAt(frontPageTitle), "The front page title is incorrect");
@@ -62,10 +68,11 @@
         {
             // Navigate to the home page
             Goto(startUrl);
+            Browser.ToSleep(twoSec);
 
             // Select a school link
             Pages.HomePage.SelectedSchool();
-            Browser.ToSleep(2000);
+            Browser.ToSleep(twoSec);
 
             // Assert the correct school in choosen
             Assert.IsTrue(Pages.SelectedSchoolsPage.IsCapeTownSchool(capeTownSchool), "The incorrect school was chosen");
@@ -82,6 +89,7 @@
         {
             // Navigate to the logon page
             Goto(logonPage);
+            Browser.ToSleep(twoSec);
 
             // Assert you on the logon page
             Assert.IsTrue(Pages.LoginPage.Has_login_Box(backLinkText));  // "Test has not reached the login Box");
@@ -109,9 +117,10 @@
 
             // Navigate to the logon page
             Goto(logonPage);
+            Browser.ToSleep(twoSec);
 
             // Assert you on the logon page
-             Assert.IsTrue(Pages.LoginPage.Has_login_Box(backLinkText));  // "Test has not reached the login Box");
+            Assert.IsTrue(Pages.LoginPage.Has_login_Box(backLinkText));  // "Test has not reached the login Box");
 
             Pages.LoginPage.Login_wordpress("seluser", "P@$$W0rd");
 
@@ -136,13 +145,14 @@
 
             // Navigate to the logon page
             Goto(logonPage);
+            Browser.ToSleep(twoSec);
 
             // Assert you on the logon page
             //ssert.IsTrue(Pages.LoginPage.Has_login_Box(backLinkText));  // "Test has not reached the login Box");
             Browser.ToSleep(1000);
 
             Pages.LoginPage.Login_wordpress("seluser", "P@$$W0rd");
-            Browser.ToSleep(1000);
+            Browser.ToSleep(twoSec);
 
             // Assert you on the logon page
             Assert.IsTrue(Pages.LoginPage.UserHasLoggedOn(profilePageText), "You not on the logged in profile page");
