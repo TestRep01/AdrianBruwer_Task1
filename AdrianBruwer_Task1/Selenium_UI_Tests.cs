@@ -21,14 +21,10 @@
         // Test Managment
 
         /// <summary>
-        /// Set the Browser for each test
+        /// Can be used to automatically set the driver
         /// </summary>
         [TestInitialize]
-        public void StartUp()
-        {
-            // Choise of Browsers IE / Chrome and Firefox
-            Browser.ChangeBrowser("Chrome");
-        }
+        public void StartUp() { }
 
         /// <summary>
         /// closes the Driver after each test
@@ -49,9 +45,12 @@
         [TestMethod]
         public void Navagate_to_the_home_page_01()
         {
+            // Choise of Browsers IE / Chrome and Firefox
+            Browser.ChangeBrowser("Chrome");
+
             // Navigate to the home page
             Goto(startUrl);
-            Browser.ToSleep(twoSec);
+            Browser.ToSleep(threeSec);
 
             // Assert you on the home page
             Assert.IsTrue(Pages.HomePage.IsAt(frontPageTitle), "The front page title is incorrect");
@@ -66,6 +65,9 @@
         [TestMethod]
         public void Navagate_To_Selected_school_02()
         {
+            // Choise of Browsers IE / Chrome and Firefox
+            Browser.ChangeBrowser("Chrome");
+
             // Navigate to the home page
             Goto(startUrl);
             Browser.ToSleep(twoSec);
@@ -87,6 +89,9 @@
         [TestMethod]
         public void Logon_To_Website_with_Chrome_3()
         {
+            // Choise of Browsers IE / Chrome and Firefox
+            Browser.ChangeBrowser("Chrome");
+
             // Navigate to the logon page
             Goto(logonPage);
             Browser.ToSleep(twoSec);
@@ -137,7 +142,7 @@
         [TestMethod]
         public void Logon_To_Website_With_IE_5()
         {
-            // Close automatic driver
+             // Close automatic driver
             Browser.Close();
 
             // Change driver to FireFox

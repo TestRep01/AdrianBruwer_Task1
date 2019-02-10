@@ -28,6 +28,7 @@ display and record the results gennerated for the TRX files.
 Please install the Github visual studio extension.
 In Visual studio go to Team explore and select Managed Connections Github.
 Enter provided Credintials.(testtasksel@gmail.com, password P@$$W0rd)
+Selecet clone (TestRep01/AdrianBruwer_Task1)
 
 ## Running the tests
 
