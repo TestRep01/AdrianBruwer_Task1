@@ -11,12 +11,21 @@
         private static string startUrl = System.Configuration.ConfigurationManager.AppSettings["StartUpURL"];
         private static string frontPageTitle = System.Configuration.ConfigurationManager.AppSettings["frontPageTitle"];
         private static string capeTownSchool = System.Configuration.ConfigurationManager.AppSettings["CapeTownSchool"];
-        private static string logonPage = System.Configuration.ConfigurationManager.AppSettings["LogonPage"];
+        private static string loginPage = System.Configuration.ConfigurationManager.AppSettings["LogonPage"];
         private static string backLinkText = System.Configuration.ConfigurationManager.AppSettings["backLinkText"];
         private static string profilePageText = System.Configuration.ConfigurationManager.AppSettings["ProfilePageText"];
         private static int oneSec = Convert.ToInt16(System.Configuration.ConfigurationManager.AppSettings["OneSec"]);
         private static int twoSec = Convert.ToInt16(System.Configuration.ConfigurationManager.AppSettings["TwoSec"]);
         private static int threeSec = Convert.ToInt16(System.Configuration.ConfigurationManager.AppSettings["ThreeSec"]);
+        private static string testUser = System.Configuration.ConfigurationManager.AppSettings["TestUser"];
+        private static string password = System.Configuration.ConfigurationManager.AppSettings["Password"];
+
+        private enum BrowserList
+        {
+            Chrome,
+            FireFox,
+            IE
+        }
 
         // Test Managment
 
@@ -27,7 +36,7 @@
         public void StartUp() { }
 
         /// <summary>
-        /// closes the Driver after each test
+        /// Closes the Driver after each test
         /// </summary>
         [TestCleanup]
         public void TearDown()
@@ -45,8 +54,8 @@
         [TestMethod]
         public void Navagate_to_the_home_page_01()
         {
-            // Choise of Browsers IE / Chrome and Firefox
-            Browser.ChangeBrowser("Chrome");
+            // Set Browser to Chorme
+            Browser.SetBrowser(BrowserList.Chrome.ToString());
 
             // Navigate to the home page
             Goto(startUrl);
@@ -65,8 +74,8 @@
         [TestMethod]
         public void Navagate_To_Selected_school_02()
         {
-            // Choise of Browsers IE / Chrome and Firefox
-            Browser.ChangeBrowser("Chrome");
+            // Set Browser to Chorme
+            Browser.SetBrowser(BrowserList.Chrome.ToString());
 
             // Navigate to the home page
             Goto(startUrl);
@@ -84,24 +93,24 @@
         /// 03
         /// </summary>
         /// <remarks>
-        ///  Logon to the website using a chrome browser
+        ///  Login to the website using a chrome browser
         /// </remarks>
         [TestMethod]
-        public void Logon_To_Website_with_Chrome_3()
+        public void Login_To_The_Website_with_Chrome_3()
         {
-            // Choise of Browsers IE / Chrome and Firefox
-            Browser.ChangeBrowser("Chrome");
+            // Set Browser to Chorme
+            Browser.SetBrowser(BrowserList.Chrome.ToString());
 
-            // Navigate to the logon page
-            Goto(logonPage);
+            // Navigate to the login page
+            Goto(loginPage);
             Browser.ToSleep(twoSec);
 
-            // Assert you on the logon page
-            Assert.IsTrue(Pages.LoginPage.Has_login_Box(backLinkText));  // "Test has not reached the login Box");
+            // Assert you on the login page
+            Assert.IsTrue(Pages.LoginPage.Has_login_Box(backLinkText), "Test has not reached the login Box");
 
-            Pages.LoginPage.Login_wordpress("seluser", "P@$$W0rd");
+            Pages.LoginPage.Login_wordpress(testUser, password);
 
-           // Assert you on the logon page
+           // Assert you on the login page
            Assert.IsTrue(Pages.LoginPage.UserHasLoggedOn(profilePageText), "You not on the logged in profile page");
         }
 
@@ -109,27 +118,24 @@
         /// 04
         /// </summary>
         /// <remarks>
-        ///  Logon to the website using FireFox
+        ///  Login to the website using FireFox
         /// </remarks>
         [TestMethod]
-        public void Logon_To_Website_With_FireFox_4()
+        public void Login_To_The_Website_With_FireFox_4()
         {
-            // Close automatic driver
-            Browser.Close();
+            // Set Browser to FireFox
+            Browser.SetBrowser(BrowserList.FireFox.ToString());
 
-            // Change driver to FireFox
-            Browser.ChangeBrowser("FireFox");
-
-            // Navigate to the logon page
-            Goto(logonPage);
+            // Navigate to the login page
+            Goto(loginPage);
             Browser.ToSleep(twoSec);
 
-            // Assert you on the logon page
-            Assert.IsTrue(Pages.LoginPage.Has_login_Box(backLinkText));  // "Test has not reached the login Box");
+            // Assert you on the login page
+            Assert.IsTrue(Pages.LoginPage.Has_login_Box(backLinkText), "The Test has not reached the login Box");
 
-            Pages.LoginPage.Login_wordpress("seluser", "P@$$W0rd");
+            Pages.LoginPage.Login_wordpress(testUser, password);
 
-            // Assert you on the logon page
+            // Assert you on the login page
             Assert.IsTrue(Pages.LoginPage.UserHasLoggedOn(profilePageText), "You not on the logged in profile page");
         }
 
@@ -137,29 +143,25 @@
         /// 04
         /// </summary>
         /// <remarks>
-        ///  Logon to the website using IE
+        ///  Login to the website using IE
         /// </remarks>
         [TestMethod]
-        public void Logon_To_Website_With_IE_5()
+        public void Login_To_The_Website_With_IE_5()
         {
-             // Close automatic driver
-            Browser.Close();
+            // Set Browser to IE
+            Browser.SetBrowser(BrowserList.IE.ToString());
 
-            // Change driver to FireFox
-            Browser.ChangeBrowser("IE");
-
-            // Navigate to the logon page
-            Goto(logonPage);
+            // Navigate to the login page
+            Goto(loginPage);
             Browser.ToSleep(twoSec);
 
-            // Assert you on the logon page
-            //ssert.IsTrue(Pages.LoginPage.Has_login_Box(backLinkText));  // "Test has not reached the login Box");
-            Browser.ToSleep(1000);
+            // Assert you on the login page
+            Assert.IsTrue(Pages.LoginPage.Has_login_Box(backLinkText), "Test has not reached the login Box");
 
-            Pages.LoginPage.Login_wordpress("seluser", "P@$$W0rd");
+            Pages.LoginPage.Login_wordpress(testUser, password);
             Browser.ToSleep(twoSec);
 
-            // Assert you on the logon page
+            // Assert you on the login page
             Assert.IsTrue(Pages.LoginPage.UserHasLoggedOn(profilePageText), "You not on the logged in profile page");
         }
     }

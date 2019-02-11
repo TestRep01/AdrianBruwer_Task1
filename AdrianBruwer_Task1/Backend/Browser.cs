@@ -51,7 +51,7 @@
         /// <returns>
         ///  The driver for the choisen browser
         /// </returns>
-        public static IWebDriver ChangeBrowser(string choisenBrowser)
+        public static IWebDriver SetBrowser(string choisenBrowser)
         {
             // Check for  null or white space
             if (string.IsNullOrWhiteSpace(choisenBrowser))

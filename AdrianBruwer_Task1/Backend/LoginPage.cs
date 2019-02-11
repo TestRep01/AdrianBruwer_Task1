@@ -36,7 +36,7 @@
         }
 
         /// <summary>
-        /// Returns true if you logged on to the profile page
+        /// Returns true if you logged into the profile page
         /// </summary>
         public bool UserHasLoggedOn(string profilePageText)
         {

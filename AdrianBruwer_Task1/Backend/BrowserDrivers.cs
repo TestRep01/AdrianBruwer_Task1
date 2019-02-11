@@ -5,6 +5,7 @@
     using OpenQA.Selenium.Chrome;
     using OpenQA.Selenium.Firefox;
     using OpenQA.Selenium.IE;
+    using OpenQA.Selenium.Remote;
 
     public static class BrowserDrivers
     {
@@ -25,22 +26,14 @@
             {
                 case "IE":
                     intiatedDriver = new InternetExplorerDriver(driverlocation);
-                    InternetExplorerOptions options = new InternetExplorerOptions();
-                    options.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
-                    options.IgnoreZoomLevel = true;
-                    options.UnhandledPromptBehavior = UnhandledPromptBehavior.Accept;
-                    options.EnablePersistentHover = true;
-                    options.EnableNativeEvents = false;
-                    options.EnsureCleanSession = true;
-                    options.RequireWindowFocus = true;
-                    break;
+                     DesiredCapabilities cap = new DesiredCapabilities();
+                     cap.SetCapability("ie.ensureCleanSession", true);
+                     break;
 
                 case "Firefox":
                     intiatedDriver = new FirefoxDriver(driverlocation);
-                    FirefoxOptions option = new FirefoxOptions();
-
-
                     break;
+
                 case "Chrome":
                     intiatedDriver = new ChromeDriver(driverlocation);
                     break;
