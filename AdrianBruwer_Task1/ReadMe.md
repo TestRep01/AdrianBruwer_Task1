@@ -29,6 +29,9 @@ A gmail and github account have been setup for a easy deploy.
 <li>Github users testtasksel@gmail.com, password TestTask1Sel</li>
 </ul> 
 
+The UI tests should be triggered after each nightly build and results send to regression and automation testers as
+any failers may be either a regression or an prequisted that needs to be applied.
+
 It has not been done for this project, but in a real world deployment a website would be setup to
 display and record the results generated for the TRX files.
 
