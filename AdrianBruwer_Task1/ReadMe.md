@@ -26,7 +26,7 @@ A gmail and github account have been setup for a easy deploy.
 
 <ul>
 <li>Gmail testtasksel@gmail.com, password P@$$W0rd</li>
-<li>Github users testtasksel@gmail.com, password TestTask1Sel</li>
+<li>Github users testtasksel@gmail.com, password P@$$W0rd!2</li>
 <li>[Task Location] https://github.com/TestRep01/AdrianBruwer_Task1</li>
 </ul> 
 
